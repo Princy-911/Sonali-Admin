@@ -23,6 +23,8 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/change-password', [LoginController::class, 'changePassword'])->name('change-password');
 
+Route::post('/change-password', [LoginController::class, 'updatePassword'])->name('change-password');
+
 Route::get('/edit-profile', [LoginController::class, 'editProfile'])->name('edit-profile');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

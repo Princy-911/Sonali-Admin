@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -45,7 +47,8 @@ class LoginController extends Controller
         if(!$user){
             return redirect('/login'); 
         } else {
-            return view('change-password', compact('user'));  
+            $password = Crypt::decrypt($user->password);
+            return view('change-password', compact('user', 'password'));  
         }
     }
 
@@ -58,6 +61,17 @@ class LoginController extends Controller
         } else {
             return view('edit-profile', compact('user'));  
         }  
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+echo "<pre>"; print_r($user); exit;
+        if(!$user){
+            return redirect('/login'); 
+        } else {
+            return view('change-password', compact('user'));  
+        }
     }
 
     public function logout()

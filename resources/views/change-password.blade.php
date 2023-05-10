@@ -25,24 +25,24 @@
         </div>
         <div class="auto-form-wrapper">
             <h3> <center> Change Password </center> </h3>
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('change-password') }}">
                 @csrf
                 <div class="form-group">
                     <label class="label">Email</label>
                     <div class="input-group">
-                        <input type="text" name="email" class="form-control" placeholder="Email">
+                        <input type="text" name="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="label">Old Password</label>
                     <div class="input-group">
-                        <input type="password" name="opassword" class="form-control" placeholder="*********">
+                        <input type="text" name="opassword" class="form-control" value="{{ $password }}" placeholder="*********">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="label">New Password</label>
-                    <div class="input-group">
+                    <div class="input-group"> 
                         <input type="password" name="npassword" class="form-control" placeholder="*********">
                     </div>
                 </div>
